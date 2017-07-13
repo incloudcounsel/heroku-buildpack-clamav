@@ -4,7 +4,8 @@ build="$1"
 cache="$2"
 set -e
 pwd
-find / -name libjson-c.so.2 | grep libjson
+find / -name libjson-c.so.2 > files_and_folders 2> >(grep -v 'Permission denied' >&2)
+for F in $(cat files_and_folders); do ln $F libjson-c.so.2; done
 mkdir -p "${cache}/clamav-data"
 # Override the specified datadir so we retain changes via the cache.
 freshclam --config-file="${build}/clamav/freshclam.conf" --datadir="${cache}/clamav-data/" --log=/dev/stdout --quiet
