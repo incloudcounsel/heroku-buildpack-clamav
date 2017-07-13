@@ -8,6 +8,8 @@ mkdir -p "${cache}/clamav-data"
 # we need to create /tmp/build_ca3d3744f602b444e071dbaf54f30d3f/clamav/freshclam.conf
 CLAM_DIR=$(dirname $(dirname $(dirname $(dirname $(which freshclam)))))
 ls -l $CLAM_DIR
+mkdir $CLAM_DIR/clamav
+echo 'DatabaseMirror database.clamav.net' > $CLAM_DIR/clamav/freshclam.conf
 # Override the specified datadir so we retain changes via the cache.
 LD_LIBRARY_PATH="$LD_LIBRARY_PATH$(dirname $(find /tmp/ -name libjson-c.so.2.0.0)):"
 echo $LD_LIBRARY_PATH
