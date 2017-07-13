@@ -16,3 +16,5 @@ echo $LD_LIBRARY_PATH
 freshclam --config-file="${build}/clamav/freshclam.conf" --datadir="${cache}/clamav-data/" --log=/dev/stdout --quiet
 rm -rf "${build}/.clamav-data"
 cp -rp "${cache}/clamav-data" "${build}/.clamav-data"
+echo "database in ${build}/.clamav-data:"
+ls -l "${build}/.clamav-data"
