@@ -3,15 +3,10 @@
 build="$1"
 cache="$2"
 set -e
-echo 'doing find'
-# find / -name libjson-c.so.2.0.0 2>/dev/null
-echo 'create link...'
-for F in $(find / -name libjson-c.so.2.0.0 2>/dev/null); do ln -s $F ./libjson-c.so.2; done
-echo '*****  ls -l:'
-ls -l
-echo $LD_LIBRARY_PATH
 mkdir -p "${cache}/clamav-data"
 # Override the specified datadir so we retain changes via the cache.
+LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(find /tmp/ -name libjson-c.so.2.0.0)"
+echo $LD_LIBRARY_PATH
 freshclam --config-file="${build}/clamav/freshclam.conf" --datadir="${cache}/clamav-data/" --log=/dev/stdout --quiet
 rm -rf "${build}/.clamav-data"
 cp -rp "${cache}/clamav-data" "${build}/.clamav-data"
