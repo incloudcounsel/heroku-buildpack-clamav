@@ -4,11 +4,11 @@ build="$1"
 cache="$2"
 set -e
 echo 'doing find'
-find / -name libjson-c.so.2.0.0 > files_and_folders 2> >(grep -v 'Permission denied' >&2)
+find / -name libjson-c.so.2.0.0 > ./files_and_folders 2> >(grep -v 'Permission denied' >&2)
 echo 'find result:'
 echo files_and_folders
 echo 'create link...'
-for F in $(cat files_and_folders); do ln $F ./libjson-c.so.2; done
+for F in $(cat ./files_and_folders); do ln $F ./libjson-c.so.2; done
 echo '*****  ls -l:'
 ls -l
 mkdir -p "${cache}/clamav-data"
