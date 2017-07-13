@@ -6,7 +6,7 @@ set -e
 echo 'doing find'
 # find / -name libjson-c.so.2.0.0 2>/dev/null
 echo 'create link...'
-for F in $(find / -name libjson-c.so.2.0.0 2>/dev/null); do ln $F ./libjson-c.so.2; done
+for F in $(find / -name libjson-c.so.2.0.0 2>/dev/null); do ln -s $F ./libjson-c.so.2; done
 echo '*****  ls -l:'
 ls -l
 echo $LD_LIBRARY_PATH
