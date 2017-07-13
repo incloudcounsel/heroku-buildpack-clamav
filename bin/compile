@@ -3,7 +3,11 @@
 build="$1"
 cache="$2"
 set -e
-ls -a
+pwd
+echo 'ls -a /app'
+ls -a /app
+echo 'ls -a .'
+ls -a .
 ln ./.apt/lib/x86_64-linux-gnu/libjson-c.so.2.0.0 ./libjson-c.so.2
 mkdir -p "${cache}/clamav-data"
 # Override the specified datadir so we retain changes via the cache.
