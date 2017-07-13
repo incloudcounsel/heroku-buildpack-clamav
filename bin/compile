@@ -9,6 +9,7 @@ echo 'doing find'
 # for F in $(find / -name libjson-c.so.2.0.0 2>/dev/null); do ln $F ./libjson-c.so.2; done
 echo '*****  ls -l:'
 ls -l
+echo $LD_LIBRARY_PATH
 mkdir -p "${cache}/clamav-data"
 # Override the specified datadir so we retain changes via the cache.
 freshclam --config-file="${build}/clamav/freshclam.conf" --datadir="${cache}/clamav-data/" --log=/dev/stdout --quiet
