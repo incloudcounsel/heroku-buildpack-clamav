@@ -4,7 +4,7 @@ build="$1"
 cache="$2"
 set -e
 mkdir -p "${cache}/clamav-data"
-which freshclam
+ls -l $(dirname $(which freshclam))/../../../
 # Override the specified datadir so we retain changes via the cache.
 LD_LIBRARY_PATH="$LD_LIBRARY_PATH$(dirname $(find /tmp/ -name libjson-c.so.2.0.0)):"
 echo $LD_LIBRARY_PATH
